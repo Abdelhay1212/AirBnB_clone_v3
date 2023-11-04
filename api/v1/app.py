@@ -11,7 +11,7 @@ app.register_blueprint(app_views)
 
 
 @app.teardown_appcontext
-def close_db():
+def close_db(error):
     """ Close Storage """
     storage.close()
 
@@ -23,4 +23,4 @@ if __name__ == '__main__':
         host = '0.0.0.0'
     if not port:
         port = '5000'
-    app.run(debug=True, host=host, port=port, threaded=True)
+    app.run(host=host, port=port, threaded=True)
